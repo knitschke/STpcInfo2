@@ -88,7 +88,7 @@ int main(void)
   ssd1306Refresh();
   HAL_Delay(100);
 
-  ssd1306DrawString(0, 32, "Hellooo!", 3, WHITE, LAYER1);
+  ssd1306DrawString(10, 32, "Hellooo!", 3, WHITE, LAYER1);
   ssd1306Refresh();
 
   /* USER CODE END 2 */
@@ -105,7 +105,7 @@ int main(void)
 	  }else{
 		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15|GPIO_PIN_14|GPIO_PIN_13|GPIO_PIN_12, GPIO_PIN_RESET);
 	  }
-	  ssd1306DrawString(0, 32, "Hellooo!", 3, WHITE, LAYER1);
+	  ssd1306DrawString(10, 32, "Hellooo!", 3, WHITE, LAYER1);
 	  ssd1306Refresh();
   }
   /* USER CODE END 3 */
@@ -174,7 +174,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -223,14 +223,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(CS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : DC_Pin */
   GPIO_InitStruct.Pin = DC_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(DC_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PD12 PD13 PD14 PD15 */
